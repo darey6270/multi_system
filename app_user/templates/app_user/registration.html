@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+<!--=============================
+=            Sign Up            =
+==============================-->
+{%block content1 %}
+<section class="user-login section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="block">
+					<!-- Image -->
+					<div class="image align-self-center"><img class="img-fluid" src="{% static 'images/register_image.png' %}" alt="desk-image">
+					</div>
+					<!-- Content -->
+					<div class="content text-center">
+						<div class="title-text">
+							<h3>User registration</h3>
+						</div>
+						<form method="post" enctype="multipart/form-data">
+							{%csrf_token%}
+          {% render_field user_form.username|attr:'required:true'   class="form-control main" placeholder="Your Username" %}
+		    {{user_form.username.errors}}
+		  {% render_field user_form.first_name|attr:'required:true' class="form-control main" placeholder="Your Firstname" %}
+			{{user_form.first_name.errors}}
+		  {% render_field user_form.last_name|attr:'required:true'  class="form-control main" placeholder="Your Lastname" %}
+			{{user_form.last_name.errors}}
+		{% render_field user_form.email|attr:'required:true'      class="form-control main" placeholder="Your Email address" %}
+			{{user_form.email.errors}}
+          {% render_field user_form.password1|attr:'required:true'  class="form-control main" placeholder="Your password" %}
+							{{user_form.password1.errors}}
+		  {% render_field user_form.password2|attr:'required:true'  class="form-control main" placeholder="Confirm password" %}
+							{{user_form.password2.errors}}
+		{% render_field reg_form.Date_of_Birth|attr:'required:true'  class="form-control main" placeholder="Date of birth please" %}
+							{{reg_form.Data_of_Birth.errors}}
+	{% render_field reg_form.Phone_number|attr:'required:true'  class="form-control main" placeholder="Your Phone number" %}
+							{{reg_form.Phone_number.errors}}
+	{% render_field reg_form.Service_required|attr:'required:true'  class="form-control main" placeholder="Pick Service of your choice" %}
+							{{reg_form.Service_required.errors}}
+	{% render_field reg_form.What_is_your_favourite_color|attr:'required:true'  class="form-control main" placeholder="What is your favourite color" %}
+							{{reg_form.What_is_your_favourite_color.errors}}
+							<!-- Submit Button -->
+							<input class="btn btn-main-md" type="submit" value="Create">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}

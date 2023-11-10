@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{%block content1 %}
+<section class="user-login section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="block">
+					<!-- Image -->
+					<div class="image align-self-center"><img class="img-fluid" src="{% static 'images/login_image.png' %}"
+							alt="desk-image"></div>
+					<!-- Content -->
+					<div class="content text-center">
+						<div class="logo">
+							<a href="index.html"><img src="images/login_image.png" alt=""></a>
+						</div>
+						{% if messages %}
+						<ul>
+						   {% for message in messages %}
+							   <li>{{ message }}</li>
+						   {% endfor %}
+						</ul>
+						{% endif %}
+						<div class="title-text">
+							<h3>Sign in to Your Account</h3>
+						</div>
+						<ul type="none">
+							   <li>{{ form.errors }}</li>
+						</ul>
+						<form method="post">
+							{%csrf_token%}
+							<!-- Username -->
+          {% render_field form.username|attr:'required:true'  class="form-control main" placeholder="Your username" %}
+		  {% render_field form.password|attr:'required:true'  class="form-control main" placeholder="Your password" %}
+							<!-- Submit Button -->
+							<button class="btn btn-main-sm">sign in</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}
